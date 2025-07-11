@@ -2,9 +2,10 @@ const express = require('express')
 const app = express();
 const bodyParser = require('body-parser');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-
+const cors =require('cors')
 app.use(bodyParser.json());
+
+app.use(cors());
 app.post('/getResponse', (req, res) => {
     console.log(req.body.question)
     const genAI = new GoogleGenerativeAI('AIzaSyDm6aMcHnN7KL9nb_CoKhdWSzzuhGJIdDs');
@@ -28,7 +29,6 @@ app.post('/getResponse', (req, res) => {
 app.use((req, res) => {
     res.status(404).json({ msg: 'bad request' });
 });
-
 
 
 module.exports = app;
