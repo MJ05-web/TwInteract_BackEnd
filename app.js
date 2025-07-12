@@ -9,7 +9,7 @@ app.use(cors());
 app.post('/getResponse', (req, res) => {
     console.log(req.body.question)
     const genAI = new GoogleGenerativeAI('For Obvious Security Resons :)');
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "geminiflash" });
 
     model.generateContent(req.body.question).then(result=>{
         console.log(result.response.text());
